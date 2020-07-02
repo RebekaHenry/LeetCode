@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 /*
 	Task: reverse an integer that is a signed 32 bit integer
@@ -22,32 +23,31 @@
 
 */
 
-int reverse(int x){
-	
-	//int val;
-	//int arr_val[x];
+signed int reverse(signed int x){
 
-	//for (int i = 32; i >= 0; i--)
-	//	arr_val[i] = x % 10;
-	//	x /= 10;
+	signed int reverse = 0;
+	signed int back_first;
 
 
+	while (x != 0){
+		back_first = x % 10;
+		reverse = reverse * 10 + back_first;
+		x /= 10;
+	}
 
-
-
-	return x; //return the value reversed
+	return reverse;
 
 }
 
 int main(){
 
-	int x = 123;
+	signed int x = 120;
 
-	int reversed_integer;
+	signed int reversed_integer;
 
 	reversed_integer = reverse(x);
 
-	printf("%d\n", reversed_integer);
+	printf("Main: %d\n", reversed_integer);
 
 	return 0;
 }
