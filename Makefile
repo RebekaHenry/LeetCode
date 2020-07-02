@@ -1,4 +1,4 @@
-LDFLAGS = -g -Wall -pthread -std=c11
+LDFLAGS = -g -Wall -std=c11
 
 all: clean
 	gcc -o reverse reverse.c $(LDFLAGS)
