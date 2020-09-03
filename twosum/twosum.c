@@ -43,63 +43,59 @@
 	if they equal the target, return the indices
 
 	otherwise, shift each pointer by one and keep checking if the values equal to the target
+
+	modified algorithm:
+
+	instead of using 2 pointers, just use the loop and the nums array
+
+
  * 
  */
 int* twoSum( int* nums, int numsSize, int target, int* returnSize )
 {
 	//numsSize = sizeof(nums)/sizeof(int*);
 
-	//malloc the returned array
-	int* returnArray = ( int* ) malloc( sizeof( int ) * 2 );
-
-	//pointers 0 and 1
-	int ptr0, ptr1;
-
-	int index0 = 0;
-	int index1 = 0;
-
 	//traverse through the nums array
-	for (int i = 0; i < numsSize; i++)
+	for (int i = 0; i < numsSize - 1; i++)
 	{
-		if ( returnArray == NULL)
+		for (int j = i + 1; j < numsSize; j++)
 		{
-			*returnSize = 0;
-			return NULL;
-		}
-		
-		//set ptr0 to the first index (0)
-		ptr0 = *( nums + i );
-		index0 = i;
+			//check if the indices add up to the target
+			if ( nums[i] + nums[j] == target )
+			{
+                //malloc the returned array
+	            int* returnArray = ( int* ) malloc( sizeof( int ) * 2 );
+                
+                if ( returnArray == NULL)
+                {
+                    *returnSize = 0;
+                    return NULL;
+                }
+				
+				//place the indices into return array
+				returnArray[0] = i;
+				returnArray[1] = j;
 
-		//set ptr1 to the second index (1)
-		ptr1 = *( nums + ( i+1 ) );
-		index1 = i+1;
 
-		//check if the indices add up to the target
-		if ( ptr0 + ptr1 == target )
-		{
-			//place the indices into return array
-			returnArray[0] = index0;
-			returnArray[1] = index1;
-
-			*returnSize = 2;
-			return returnArray;	
+				*returnSize = 2;
+				return returnArray;	
+			}
 		}
 	}
 
 	*returnSize = 0;
 
-	//return the indices that correspond to the target
 	return NULL;
-
 }
+
+
 
 
 int main( ){
 
-	int nums[ ] = {2,7,11,15};
+	int nums[ ] = {3,2,4};
 	int numsSize = sizeof(nums)/sizeof(int*);
-	int target = 9;
+	int target = 6;
 	int returnSize[2] = { };
 
 	twoSum( nums, numsSize, target, returnSize );
