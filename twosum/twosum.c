@@ -48,16 +48,12 @@
  */
 int* twoSum( int* nums, int numsSize, int target, int* returnSize )
 {
-	int index0, index1;
-
-	index0 = 0;
-	index1 = 0;
-
 
 	for ( int i = 0; i < numsSize - 1; i++ )
 	{
 		for ( int j = i + 1; j < numsSize; j++ )
 		{
+
 			//check if the values we are looking for are equal to the target
 			if ( nums[i] + nums[j] == target )
 			{
@@ -69,6 +65,8 @@ int* twoSum( int* nums, int numsSize, int target, int* returnSize )
 	                    *returnSize = 0;
 	                    return NULL;
 	                }
+
+
 					
 					//place the indices into return array
 					returnArray[0] = i;
