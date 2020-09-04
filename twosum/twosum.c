@@ -44,130 +44,45 @@
 
 	otherwise, shift each pointer by one and keep checking if the values equal to the target
 
-	printf( "found target if statement %d + %d = %d \n", stayPutPtr, traversePtr, target );
-	printf( "indices %d, %d\n", index0, index1 );
-
-
-
  * 
  */
 int* twoSum( int* nums, int numsSize, int target, int* returnSize )
 {
-	//numsSize = sizeof(nums)/sizeof(int*);
-
-	int stayPutPtr, traversePtr;
 	int index0, index1;
 
 	index0 = 0;
 	index1 = 0;
 
 
-	for ( int i = 0; i < numsSize; i++ )
+	for ( int i = 0; i < numsSize - 1; i++ )
 	{
-
-		//set the stayPutPtr to the first index
-		stayPutPtr = nums[i];
-		index0 = i;
-
-		//set the traversePtr to the next index
-		traversePtr = nums [numsSize - 1];
-		index1 = numsSize - 1;
-
-		//check if the values we are looking for are equal to the target
-		if ( stayPutPtr + traversePtr == target )
+		for ( int j = i + 1; j < numsSize; j++ )
 		{
-			printf( "found target if statement %d + %d = %d \n", stayPutPtr, traversePtr, target );
-			printf( "indices %d, %d\n", index0, index1 );
-			 	//malloc the returned array
-	            /*int* returnArray = ( int* ) malloc( sizeof( int ) * 2 );
-                
-                if ( returnArray == NULL)
-                {
-                    *returnSize = 0;
-                    return NULL;
-                }
-				
-				//place the indices into return array
-				returnArray[0] = index0;
-				returnArray[1] = index1;
-
-
-				*returnSize = 2;
-				return returnArray;*/
-
-
-		}
-		else if ( stayPutPtr + traversePtr != target )
-		{
-			//set the stayPutPtr to the first index
-			stayPutPtr = nums[0 + i];
-			index0 = 0 + i;
-
-			//set the traversePtr to the next index
-			traversePtr = nums [i + 1];
-			index1 = i + 1;
-
-			if ( stayPutPtr + traversePtr == target )
+			//check if the values we are looking for are equal to the target
+			if ( nums[i] + nums[j] == target )
 			{
-				printf( "found target if statement %d + %d = %d \n", stayPutPtr, traversePtr, target );
-				printf( "indices %d, %d\n", index0, index1 );
-				//malloc the returned array
-	            /*int* returnArray = ( int* ) malloc( sizeof( int ) * 2 );
-                
-                if ( returnArray == NULL)
-                {
-                    *returnSize = 0;
-                    return NULL;
-                }
-				
-				//place the indices into return array
-				returnArray[0] = index0;
-				returnArray[1] = index1;
+				 	//malloc the returned array
+		            int* returnArray = ( int* ) malloc( sizeof( int ) * 2 );
+	                
+	                if ( returnArray == NULL)
+	                {
+	                    *returnSize = 0;
+	                    return NULL;
+	                }
+					
+					//place the indices into return array
+					returnArray[0] = i;
+					returnArray[1] = j;
 
 
-				*returnSize = 2;
-				return returnArray;*/
-			}
-		}
-
-		else
-		{
-			//set the stayPutPtr to the first index
-			stayPutPtr = nums[0];
-			index0 = 0;
-
-			//set the traversePtr to the next index
-			traversePtr = nums [i + 1];
-			index1 = i + 1;
-
-			if ( stayPutPtr + traversePtr == target )
-			{
-				printf( "found target if statement %d + %d = %d \n", stayPutPtr, traversePtr, target );
-				printf( "indices %d, %d\n", index0, index1 );
-				
-				//malloc the returned array
-	            /*int* returnArray = ( int* ) malloc( sizeof( int ) * 2 );
-                
-                if ( returnArray == NULL)
-                {
-                    *returnSize = 0;
-                    return NULL;
-                }
-				
-				//place the indices into return array
-				returnArray[0] = index0;
-				returnArray[1] = index1;
-
-
-				*returnSize = 2;
-				return returnArray;	*/
+					*returnSize = 2;
+					return returnArray;
+			
 			}
 
 		}
-
-	}
-
 		
+	}
 
 	*returnSize = 0;
 
@@ -180,9 +95,9 @@ int* twoSum( int* nums, int numsSize, int target, int* returnSize )
 
 int main( ){
 
-	int nums[ ] = { -3,4,-3,90 };
+	int nums[ ] = { 2,7,11,15 };
 	int numsSize = sizeof(nums)/sizeof(int*);
-	int target = 0;
+	int target = 18;
 	int returnSize[2] = { };
 
 	twoSum( nums, numsSize, target, returnSize );
