@@ -50,6 +50,7 @@ signed int reverse( signed int x )
 	return reverse;
 
 }
+
 _Bool isPalindrome( int x )
 {
 	int reversedVal = 0;
